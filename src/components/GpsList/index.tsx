@@ -1,20 +1,22 @@
-import { FlatList, Pressable, Text } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
+import { FlatList } from 'react-native'
 
 import response from '../../../frontend_data_gps.json'
+import { GpsItem } from './components/GpsItem'
+
 export function GpsList() {
+  const { navigate } = useNavigation()
+
+  function handleSelectGpsItem() {
+    navigate('routedetail')
+  }
+
   return (
     <FlatList
       data={response.courses}
       showsVerticalScrollIndicator={false}
       renderItem={({ item, index }) => (
-        <Pressable key={index}>
-          <Text>Parada {index + 1}</Text>
-          <Text>Saída às 16h</Text>
-          <Text>Distancia</Text>
-          <Text>{item.distance}</Text>
-          <Text>Toal de Paradas</Text>
-          <Text>{item.stops}</Text>
-        </Pressable>
+        <GpsItem item={item} index={index} onPress={handleSelectGpsItem} />
       )}
     />
   )
