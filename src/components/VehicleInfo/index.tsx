@@ -1,6 +1,12 @@
 import response from '../../../frontend_data_gps.json'
 import { formatLicensePlate } from '../../utils/format-vehicle-plate'
-import { Container, Message, VehicleImage } from './styles'
+import {
+  Container,
+  VehicleImage,
+  VehiclePlate,
+  VehicleTitle,
+  VehicleWrapper,
+} from './styles'
 
 export function VehicleInfo() {
   const vehicleImage = response.vehicle.picture.address
@@ -14,7 +20,10 @@ export function VehicleInfo() {
         }}
         alt="Vehicle Image"
       />
-      <Message>{vehiclePlate}</Message>
+      <VehicleWrapper>
+        <VehicleTitle>Placa do veículo</VehicleTitle>
+        <VehiclePlate>{vehiclePlate}</VehiclePlate>
+      </VehicleWrapper>
     </Container>
   )
 }
