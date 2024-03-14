@@ -14,6 +14,7 @@ export default {
     BLUE_700: '#1d4ed8',
     BLUE_800: '#1e40af',
     BLUE_900: '#1e3a8a',
+    BLUE_950: '#172554',
   },
 
   FONT_SIZE: {
