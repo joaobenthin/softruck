@@ -7,8 +7,10 @@ import { GpsItem } from './components/GpsItem'
 export function GpsList() {
   const { navigate } = useNavigation()
 
-  function handleSelectGpsItem() {
-    navigate('routedetail')
+  function handleSelectGpsItem(item) {
+    navigate('routedetail', {
+      course: item,
+    })
   }
 
   return (
@@ -16,7 +18,11 @@ export function GpsList() {
       data={response.courses}
       showsVerticalScrollIndicator={false}
       renderItem={({ item, index }) => (
-        <GpsItem item={item} index={index} onPress={handleSelectGpsItem} />
+        <GpsItem
+          item={item}
+          index={index}
+          onPress={() => handleSelectGpsItem(item)}
+        />
       )}
     />
   )
