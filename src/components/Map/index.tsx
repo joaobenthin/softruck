@@ -1,10 +1,26 @@
-import { useEffect, useRef, useState } from 'react'
+import { forwardRef, useImperativeHandle, useRef, useState } from 'react'
 import { Platform } from 'react-native'
-import MapView, { AnimatedRegion, MarkerAnimated } from 'react-native-maps'
+import MapView, { AnimatedRegion, MapMarker, Marker } from 'react-native-maps'
+import MapViewDirections from 'react-native-maps-directions'
 
-export function Map() {
-  const duration = 5000
-  const marker = useRef<MarkerAnimated>(null)
+import { Coordinate } from '../../screens/RouteDetail'
+
+interface MapRef {
+  animateMarkerToCoordinate: (coordinate: Coordinate) => void
+}
+
+interface MapProps {
+  course: {
+    gps: {
+      latitude: number
+      longitude: number
+    }[]
+  }
+}
+
+const Map = forwardRef<MapRef, MapProps>(function Map(props, ref) {
+  const { course } = props
+  const markerRef = useRef<MapMarker>(null)
   const [coords] = useState<AnimatedRegion>(
     new AnimatedRegion({
       latitude: 37.78825,
@@ -14,44 +30,84 @@ export function Map() {
     }),
   )
 
-  useEffect(() => {
+  const mapViewDirectionsData = course.gps.map((gpsItem) => ({
+    latitude: gpsItem.latitude,
+    longitude: gpsItem.longitude,
+  }))
+
+  const initialLatitude = course.gps[0].latitude
+  const initialLongitude = course.gps[0].longitude
+
+  const lastIndex = course.gps.length - 1
+
+  const endLatitude =
+    course.gps.length > 25
+      ? course.gps[25].latitude
+      : course.gps[lastIndex].latitude
+  const endLongitude =
+    course.gps.length > 25
+      ? course.gps[25].longitude
+      : course.gps[lastIndex].longitude
+
+  const toCoordinate = {
+    latitude: endLatitude,
+    longitude: endLongitude,
+  }
+
+  const animateMarkerToCoordinate = (coordinate: Coordinate) => {
     if (Platform.OS === 'android') {
-      if (marker.current) {
-        marker.current.animateMarkerToCoordinate(
-          { latitude: 37.781, longitude: -122.4324 },
-          duration,
-        )
+      if (markerRef.current) {
+        markerRef.current?.animateMarkerToCoordinate(coordinate, 2000)
       }
     } else {
-      coords
-        .timing({
-          latitude: 37.78825,
-          longitude: -122.4324,
-          duration,
-          useNativeDriver: true,
-          latitudeDelta: 37.78825,
-          longitudeDelta: -122.4324,
-          toValue: { x: 37.78825, y: -122.4324 },
-        })
-        .start()
+      // iOS
     }
-  }, [marker, coords])
+  }
+
+  useImperativeHandle(ref, () => ({
+    animateMarkerToCoordinate(coordinate) {
+      animateMarkerToCoordinate(coordinate)
+    },
+  }))
+
   return (
     <>
       <MapView
-        style={{ width: '100%', height: '100%' }}
+        style={{ width: '100%', height: '50%' }}
         initialRegion={{
-          latitude: 37.78825,
-          longitude: -122.4324,
+          latitude: initialLatitude,
+          longitude: initialLongitude,
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }}
       >
-        <MarkerAnimated
-          ref={marker}
-          coordinate={{ latitude: 37.78825, longitude: -122.4324 }}
+        <Marker
+          ref={markerRef}
+          coordinate={{
+            latitude: initialLatitude,
+            longitude: initialLongitude,
+          }}
+        />
+        <MapViewDirections
+          origin={{
+            latitude: mapViewDirectionsData[0].latitude,
+            longitude: mapViewDirectionsData[0].longitude,
+          }}
+          destination={{
+            latitude: toCoordinate.latitude,
+            longitude: toCoordinate.longitude,
+          }}
+          waypoints={
+            mapViewDirectionsData.length > 25
+              ? mapViewDirectionsData.slice(1, 25)
+              : mapViewDirectionsData.slice(1, -1)
+          }
+          strokeWidth={3}
+          strokeColor="blue"
         />
       </MapView>
     </>
   )
-}
+})
+
+export default Map
