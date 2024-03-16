@@ -7,3 +7,8 @@ export const Container = styled.View`
   justify-content: space-between;
   background-color: ${({ theme }) => theme.COLORS.BLUE_700};
 `
+
+export const Title = styled.Text`
+  color: ${({ theme }) => theme.COLORS.BLUE_100};
+  font-size: ${({ theme }) => theme.FONT_SIZE.XL}px;
+`

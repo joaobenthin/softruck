@@ -4,9 +4,13 @@ import { TouchableOpacity } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { useTheme } from 'styled-components'
 
-import { Container } from './styles'
+import { Container, Title } from './styles'
 
-export function Header() {
+interface HeaderProps {
+  title?: string
+}
+
+export function Header({ title }: HeaderProps) {
   const { COLORS } = useTheme()
   const { goBack } = useNavigation()
   const insets = useSafeAreaInsets()
@@ -18,6 +22,8 @@ export function Header() {
       <TouchableOpacity activeOpacity={0.7} onPress={goBack}>
         <ArrowLeft size={24} weight="bold" color={COLORS.BLUE_100} />
       </TouchableOpacity>
+
+      {title && <Title>{title}</Title>}
     </Container>
   )
 }
