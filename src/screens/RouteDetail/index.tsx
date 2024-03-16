@@ -1,9 +1,11 @@
+import { RouteProp } from '@react-navigation/native'
 import { Car, FlagCheckered } from 'phosphor-react-native'
 import { useRef } from 'react'
 import { View } from 'react-native'
 
 import { Header } from '../../components/Header'
 import Map from '../../components/Map'
+import { NativeStackParamList } from '../../routes'
 import { LocationInfo } from './LocationInfo'
 import { Content, Line } from './styles'
 
@@ -16,7 +18,13 @@ interface MapMarkerRef {
   animateMarkerToCoordinate: (coordinate: Coordinate) => void
 }
 
-export function RouteDetail({ route }) {
+type RouteDetailScreenRouteProp = RouteProp<NativeStackParamList, 'RouteDetail'>
+
+type RouteDetailProps = {
+  route: RouteDetailScreenRouteProp
+}
+
+export function RouteDetail({ route }: RouteDetailProps) {
   const { course } = route.params
   const gpsLength = course.gps.length
   const addressInitial = course.gps[0].address
@@ -40,7 +48,7 @@ export function RouteDetail({ route }) {
 
   return (
     <View>
-      <Header />
+      <Header title="Parada" />
       <Map course={course} ref={markerRef} />
       <Content>
         <LocationInfo

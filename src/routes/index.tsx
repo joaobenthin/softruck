@@ -5,15 +5,21 @@ import { Home } from '../screens/Home'
 import { RouteDetail } from '../screens/RouteDetail'
 import { SignIn } from '../screens/SignIn'
 
-const { Navigator, Screen } = createNativeStackNavigator()
+export type NativeStackParamList = {
+  Home: undefined
+  SignIn: undefined
+  RouteDetail: { course: any }
+}
+
+const { Navigator, Screen } = createNativeStackNavigator<NativeStackParamList>()
 
 export function Routes() {
   return (
     <NavigationContainer>
       <Navigator screenOptions={{ headerShown: false }}>
-        <Screen name="home" component={Home} />
-        <Screen name="signin" component={SignIn} />
-        <Screen name="routedetail" component={RouteDetail} />
+        <Screen name="Home" component={Home} />
+        <Screen name="SignIn" component={SignIn} />
+        <Screen name="RouteDetail" component={RouteDetail} />
       </Navigator>
     </NavigationContainer>
   )
