@@ -4,6 +4,7 @@ import { FlatList } from 'react-native'
 
 import response from '../../../frontend_data_gps.json'
 import { NativeStackParamList } from '../../routes'
+import { Course } from '../../types'
 import { GpsItem } from './components/GpsItem'
 
 type GpsListNavigationProp = NativeStackNavigationProp<
@@ -14,7 +15,7 @@ type GpsListNavigationProp = NativeStackNavigationProp<
 export function GpsList() {
   const { navigate } = useNavigation<GpsListNavigationProp>()
 
-  function handleSelectGpsItem(item) {
+  function handleSelectGpsItem(item: Course) {
     navigate('RouteDetail', {
       course: item,
     })

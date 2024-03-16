@@ -4,11 +4,12 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { Home } from '../screens/Home'
 import { RouteDetail } from '../screens/RouteDetail'
 import { SignIn } from '../screens/SignIn'
+import { Course } from '../types'
 
 export type NativeStackParamList = {
   Home: undefined
   SignIn: undefined
-  RouteDetail: { course: any }
+  RouteDetail: { course: Course }
 }
 
 const { Navigator, Screen } = createNativeStackNavigator<NativeStackParamList>()

@@ -1,15 +1,12 @@
 import { TouchableOpacityProps, View } from 'react-native'
 
+import { Course } from '../../../../types'
 import { formatDateTime } from '../../../../utils/format-datetime'
 import { formatDistance } from '../../../../utils/format-distance'
 import { Container, Departure, Info, LicensePlate } from './styles'
 
 type Props = TouchableOpacityProps & {
-  item: {
-    start_at: string
-    distance: number
-    stops: number
-  }
+  item: Course
   index: number
 }
 
