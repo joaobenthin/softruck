@@ -4,18 +4,15 @@ import MapView, { AnimatedRegion, MapMarker, Marker } from 'react-native-maps'
 import MapViewDirections from 'react-native-maps-directions'
 
 import { Coordinate } from '../../screens/RouteDetail'
+import { Course } from '../../types'
+import { calculateMinutesDifference } from '../../utils/calculate-minutes-difference'
 
 interface MapRef {
   animateMarkerToCoordinate: (coordinate: Coordinate) => void
 }
 
 interface MapProps {
-  course: {
-    gps: {
-      latitude: number
-      longitude: number
-    }[]
-  }
+  course: Course
 }
 
 const Map = forwardRef<MapRef, MapProps>(function Map(props, ref) {
@@ -54,10 +51,16 @@ const Map = forwardRef<MapRef, MapProps>(function Map(props, ref) {
     longitude: endLongitude,
   }
 
+  const minutesToTrip = calculateMinutesDifference(
+    course.start_at,
+    course.end_at,
+  )
+  const averageSpeed = (course.distance / minutesToTrip) * 10
+
   const animateMarkerToCoordinate = (coordinate: Coordinate) => {
     if (Platform.OS === 'android') {
       if (markerRef.current) {
-        markerRef.current?.animateMarkerToCoordinate(coordinate, 2000)
+        markerRef.current?.animateMarkerToCoordinate(coordinate, averageSpeed)
       }
     } else {
       // iOS
