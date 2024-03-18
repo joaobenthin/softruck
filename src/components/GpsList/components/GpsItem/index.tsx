@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import { TouchableOpacityProps, View } from 'react-native'
 
 import { Course } from '../../../../types'
@@ -11,19 +12,23 @@ type Props = TouchableOpacityProps & {
 }
 
 export function GpsItem({ item, index, onPress, ...rest }: Props) {
+  const { t } = useTranslation()
+
   return (
     <Container activeOpacity={0.7} onPress={onPress} {...rest}>
       <Info>
         <View>
-          <LicensePlate>Parada {index + 1}</LicensePlate>
+          <LicensePlate>
+            {t('gpsList.gpsItem.stop')} {index + 1}
+          </LicensePlate>
           <Departure>{formatDateTime(item.start_at)}</Departure>
         </View>
 
         <View style={{ alignItems: 'flex-end' }}>
-          <Departure>Distância</Departure>
+          <Departure>{t('gpsList.gpsItem.distance')}</Departure>
           <LicensePlate>{formatDistance(item.distance)}</LicensePlate>
 
-          <Departure>Total de paradas</Departure>
+          <Departure>{t('gpsList.gpsItem.stopTotal')}</Departure>
           <LicensePlate>{item.stops}</LicensePlate>
         </View>
       </Info>

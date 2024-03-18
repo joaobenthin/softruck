@@ -1,6 +1,7 @@
 import { RouteProp } from '@react-navigation/native'
 import { Car, FlagCheckered } from 'phosphor-react-native'
 import { useRef } from 'react'
+import { useTranslation } from 'react-i18next'
 import { View } from 'react-native'
 
 import { Header } from '../../components/Header'
@@ -25,6 +26,8 @@ type RouteDetailProps = {
 }
 
 export function RouteDetail({ route }: RouteDetailProps) {
+  const { t } = useTranslation()
+
   const { course } = route.params
   const gpsLength = course.gps.length
   const addressInitial = course.gps[0].address
@@ -48,17 +51,17 @@ export function RouteDetail({ route }: RouteDetailProps) {
 
   return (
     <View>
-      <Header title="Parada" />
+      <Header title={`${t('routeDetail.stop')}`} />
       <Map course={course} ref={markerRef} />
       <Content>
         <LocationInfo
-          address={`Saída em ${addressInitial}`}
+          address={`${t('routeDetail.departureIn')} ${addressInitial}`}
           icon={Car}
           onPress={() => animateMarkerToCoordinate(coordinateInitial)}
         />
         <Line />
         <LocationInfo
-          address={`Chegada em ${addressFinal}`}
+          address={`${t('routeDetail.arrivalIn')} ${addressFinal}`}
           icon={FlagCheckered}
           onPress={() => animateMarkerToCoordinate(coordinateFinal)}
         />

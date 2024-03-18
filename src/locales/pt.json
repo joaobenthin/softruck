@@ -1,0 +1,33 @@
+{
+  "gpsList": {
+    "gpsItem": {
+      "stop": "Parada",
+      "distance": "Distância",
+      "stopTotal": "Total de paradas"
+    }
+  },
+  "homeHeader": {
+    "hello": "Olá,"
+  },
+  "vehicleInfo": {
+    "vehiclePlate": "Placa do veículo"
+  },
+  "routeDetail": {
+    "stop": "Parada",
+    "departureIn": "Saída em",
+    "arrivalIn": "Chegada em"
+  },
+  "signIn": {
+    "chooseLanguage": "Escolha um idioma",
+    "pt": "Português",
+    "en": "Inglês",
+    "es": "Espanhol",
+    "nextButton": "Entrar"
+  },
+  "utils": {
+    "formatDatetime": {
+      "departure": "Saída em",
+      "at": "às"
+    }
+  }
+}

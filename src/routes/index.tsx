@@ -18,8 +18,8 @@ export function Routes() {
   return (
     <NavigationContainer>
       <Navigator screenOptions={{ headerShown: false }}>
-        <Screen name="Home" component={Home} />
         <Screen name="SignIn" component={SignIn} />
+        <Screen name="Home" component={Home} />
         <Screen name="RouteDetail" component={RouteDetail} />
       </Navigator>
     </NavigationContainer>

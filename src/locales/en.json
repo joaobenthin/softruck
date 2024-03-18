@@ -1,0 +1,33 @@
+{
+  "gpsList": {
+    "gpsItem": {
+      "stop": "Stop",
+      "distance": "Distance",
+      "stopTotal": "Total stops"
+    }
+  },
+  "homeHeader": {
+    "hello": "Hello,"
+  },
+  "vehicleInfo": {
+    "vehiclePlate": "Vehicle Plate"
+  },
+  "routeDetail": {
+    "stop": "Stop",
+    "departureIn": "Departure in",
+    "arrivalIn": "Arrival in"
+  },
+  "signIn": {
+    "chooseLanguage": "Choose a language",
+    "pt": "Portuguese",
+    "en": "English",
+    "es": "Spanish",
+    "nextButton": "Enter"
+  },
+  "utils": {
+    "formatDatetime": {
+      "departure": "Departure at",
+      "at": "at"
+    }
+  }
+}

@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next'
+
 import response from '../../../frontend_data_gps.json'
 import { formatLicensePlate } from '../../utils/format-vehicle-plate'
 import {
@@ -9,6 +11,8 @@ import {
 } from './styles'
 
 export function VehicleInfo() {
+  const { t } = useTranslation()
+
   const vehicleImage = response.vehicle.picture.address
   const vehiclePlate = formatLicensePlate(response.vehicle.plate)
 
@@ -21,7 +25,7 @@ export function VehicleInfo() {
         alt="Vehicle Image"
       />
       <VehicleWrapper>
-        <VehicleTitle>Placa do veículo</VehicleTitle>
+        <VehicleTitle>{t('vehicleInfo.vehiclePlate')}</VehicleTitle>
         <VehiclePlate>{vehiclePlate}</VehiclePlate>
       </VehicleWrapper>
     </Container>
