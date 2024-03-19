@@ -22,7 +22,7 @@ export function VehicleInfo() {
         source={{
           uri: vehicleImage,
         }}
-        alt="Vehicle Image"
+        alt={t('vehicleInfo.altImage')}
       />
       <VehicleWrapper>
         <VehicleTitle>{t('vehicleInfo.vehiclePlate')}</VehicleTitle>
