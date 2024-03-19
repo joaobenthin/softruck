@@ -8,12 +8,12 @@ import pt from '../locales/pt.json'
 i18n.use(initReactI18next).init({
   compatibilityJSON: 'v3',
   resources: {
-    pt: { translation: pt },
-    en: { translation: en },
-    es: { translation: es },
+    PT: { translation: pt },
+    EN: { translation: en },
+    ES: { translation: es },
   },
-  lng: 'pt',
-  fallbackLng: ['pt', 'en', 'es'],
+  lng: 'PT',
+  fallbackLng: ['PT', 'EN', 'ES'],
   interpolation: {
     escapeValue: false,
   },

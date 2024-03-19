@@ -10,12 +10,14 @@
     "hello": "Hola,"
   },
   "vehicleInfo": {
-    "vehiclePlate": "Placa del vehículo"
+    "vehiclePlate": "Placa del vehículo",
+    "altImage": "Imagen del vehículo"
   },
   "routeDetail": {
     "stop": "Parada",
     "departureIn": "Salida en",
-    "arrivalIn": "Llegada en"
+    "arrivalIn": "Llegada en",
+    "animationText": "Presione en cualquier dirección para ver la animación en el mapa"
   },
   "signIn": {
     "chooseLanguage": "Elija un idioma",
@@ -28,6 +30,10 @@
     "formatDatetime": {
       "departure": "Salida a las",
       "at": "a las"
+    },
+    "formatDistance": {
+      "meters": "Metros",
+      "km": "km"
     }
   }
 }

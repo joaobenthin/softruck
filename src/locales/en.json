@@ -10,12 +10,14 @@
     "hello": "Hello,"
   },
   "vehicleInfo": {
-    "vehiclePlate": "Vehicle Plate"
+    "vehiclePlate": "Vehicle Plate",
+    "altImage": "Vehicle image"
   },
   "routeDetail": {
     "stop": "Stop",
     "departureIn": "Departure in",
-    "arrivalIn": "Arrival in"
+    "arrivalIn": "Arrival in",
+    "animationText": "Press on any address to view the animation on the map"
   },
   "signIn": {
     "chooseLanguage": "Choose a language",
@@ -28,6 +30,10 @@
     "formatDatetime": {
       "departure": "Departure at",
       "at": "at"
+    },
+    "formatDistance": {
+      "meters": "Meters",
+      "km": "km"
     }
   }
 }
