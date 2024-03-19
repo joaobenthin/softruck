@@ -25,8 +25,8 @@ export const Name = styled.Text`
 `
 
 export const Picture = styled.Image`
-  width: 54px;
-  height: 54px;
+  width: 56px;
+  height: 56px;
 
-  border-radius: 7px;
+  border-radius: 8px;
 `
