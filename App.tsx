@@ -3,7 +3,7 @@ import './src/config/i18n'
 import { StatusBar } from 'react-native'
 import { ThemeProvider } from 'styled-components/native'
 
-import { Routes } from './src/routes'
+import { AppRoutes } from './src/routes'
 import theme from './src/theme'
 
 export function App() {
@@ -14,7 +14,7 @@ export function App() {
         backgroundColor="transparent"
         translucent
       />
-      <Routes />
+      <AppRoutes />
     </ThemeProvider>
   )
 }
