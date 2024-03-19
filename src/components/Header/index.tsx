@@ -10,12 +10,14 @@ interface HeaderProps {
   title?: string
 }
 
+const SPACING_PADDING_TOP = 24
+
 export function Header({ title }: HeaderProps) {
   const { COLORS } = useTheme()
   const { goBack } = useNavigation()
   const insets = useSafeAreaInsets()
 
-  const paddingTop = insets.top + 24
+  const paddingTop = insets.top + SPACING_PADDING_TOP
 
   return (
     <Container style={{ paddingTop }}>
@@ -23,7 +25,7 @@ export function Header({ title }: HeaderProps) {
         <ArrowLeft size={24} weight="bold" color={COLORS.BLUE_100} />
       </TouchableOpacity>
 
-      {title && <Title>{title}</Title>}
+      {Boolean(title) && <Title>{title}</Title>}
     </Container>
   )
 }
