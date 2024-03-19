@@ -6,16 +6,16 @@ import { formatDateTime } from '../../../../utils/format-datetime'
 import { formatDistance } from '../../../../utils/format-distance'
 import { Container, Departure, Info, LicensePlate } from './styles'
 
-type Props = TouchableOpacityProps & {
+type GpsItemProps = TouchableOpacityProps & {
   item: Course
   index: number
 }
 
-export function GpsItem({ item, index, onPress, ...rest }: Props) {
+export function GpsItem({ item, index, onPress, ...rest }: GpsItemProps) {
   const { t } = useTranslation()
 
   return (
-    <Container activeOpacity={0.7} onPress={onPress} {...rest}>
+    <Container onPress={onPress} {...rest}>
       <Info>
         <View>
           <LicensePlate>
