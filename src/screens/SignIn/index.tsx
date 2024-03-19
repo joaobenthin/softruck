@@ -1,9 +1,12 @@
 import { useNavigation } from '@react-navigation/native'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import i18n from '../../config/i18n'
-import { Languages } from '../../types'
+import { Language, Languages } from '../../constants/languages'
+import { Routes } from '../../constants/routes'
+import { NativeStackParamList } from '../../routes'
 import {
   Container,
   LanguageChooseText,
@@ -16,14 +19,19 @@ import {
   Title,
 } from './styles'
 
+type SignInNavigationProp = NativeStackNavigationProp<
+  NativeStackParamList,
+  Routes.HOME
+>
+
 export function SignIn() {
   const { t } = useTranslation()
-  const { navigate } = useNavigation()
-  const [languageSelected, setLanguageSelected] = useState<Languages | null>(
+  const { navigate } = useNavigation<SignInNavigationProp>()
+  const [languageSelected, setLanguageSelected] = useState<Language | null>(
     null,
   )
 
-  function handleSelectLanguage(language: Languages) {
+  function handleSelectLanguage(language: Language) {
     setLanguageSelected(language)
     i18n.changeLanguage(language)
   }
@@ -35,16 +43,16 @@ export function SignIn() {
         <LanguageChooseText>{t('signIn.chooseLanguage')}</LanguageChooseText>
         <LanguageTextButton>
           <LanguageText
-            selected={languageSelected === 'pt'}
-            onPress={() => handleSelectLanguage('pt')}
+            selected={languageSelected === 'PT'}
+            onPress={() => handleSelectLanguage('PT')}
           >
             {t('signIn.pt')}
           </LanguageText>
         </LanguageTextButton>
         <LanguageTextButton>
           <LanguageText
-            selected={languageSelected === 'en'}
-            onPress={() => handleSelectLanguage('en')}
+            selected={languageSelected === 'EN'}
+            onPress={() => handleSelectLanguage('EN')}
           >
             {t('signIn.en')}
           </LanguageText>
@@ -52,8 +60,8 @@ export function SignIn() {
 
         <LanguageTextButton>
           <LanguageText
-            selected={languageSelected === 'es'}
-            onPress={() => handleSelectLanguage('es')}
+            selected={languageSelected === 'ES'}
+            onPress={() => handleSelectLanguage('ES')}
           >
             {t('signIn.es')}
           </LanguageText>
@@ -63,7 +71,7 @@ export function SignIn() {
       <NextButtonWrapper>
         <NextButton
           disabled={!languageSelected}
-          onPress={() => navigate('Home')}
+          onPress={() => navigate(Routes.HOME)}
         >
           <NextButtonText>{t('signIn.nextButton')}</NextButtonText>
         </NextButton>

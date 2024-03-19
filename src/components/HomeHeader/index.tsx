@@ -1,25 +1,33 @@
 import { useNavigation } from '@react-navigation/native'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { SignOut } from 'phosphor-react-native'
 import { useTranslation } from 'react-i18next'
 import { TouchableOpacity } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
+import { Routes } from '../../constants/routes'
+import { NativeStackParamList } from '../../routes'
 import { Container, Greeting, Message, Name, Picture } from './styles'
+
+type HomeHeaderNavigationProp = NativeStackNavigationProp<
+  NativeStackParamList,
+  Routes.SIGN_IN
+>
 
 export function HomeHeader() {
   const { t } = useTranslation()
-  const { navigate } = useNavigation()
+  const { navigate } = useNavigation<HomeHeaderNavigationProp>()
   const theme = useTheme()
 
-  const pictureImage = 'https://github.com/joaobenthin.png'
+  const PICTURE_IMAGE = 'https://github.com/joaobenthin.png'
 
   function handleLogOut() {
-    navigate('SignIn')
+    navigate(Routes.SIGN_IN)
   }
 
   return (
     <Container>
-      <Picture source={{ uri: pictureImage }} />
+      <Picture source={{ uri: PICTURE_IMAGE }} />
 
       <Greeting>
         <Message>{t('homeHeader.hello')}</Message>
