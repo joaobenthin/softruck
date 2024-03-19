@@ -124,6 +124,7 @@ const Map = forwardRef<MapRef, MapProps>(function Map(props, ref) {
             longitude: toCoordinate.longitude,
           }}
           waypoints={getWaypoints(mapViewDirectionsData)}
+          apikey="GOOGLE_MAPS_API_KEY"
           strokeWidth={3}
           strokeColor="blue"
         />
