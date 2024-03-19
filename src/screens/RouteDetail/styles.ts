@@ -5,7 +5,9 @@ export const Container = styled.View`
   background-color: ${({ theme }) => theme.COLORS.BLUE_800};
 `
 
-export const Content = styled.View`
+export const Content = styled.ScrollView.attrs({
+  showsVerticalScrollIndicator: false,
+})`
   flex-grow: 1;
   padding: 32px;
 `
@@ -17,4 +19,9 @@ export const Line = styled.View`
   margin-left: 23px;
   border-width: 1px;
   border-left-color: ${({ theme }) => theme.COLORS.BLUE_400};
+`
+
+export const AnimationText = styled.Text`
+  text-align: center;
+  margin-top: 16px;
 `

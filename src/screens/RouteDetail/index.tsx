@@ -6,9 +6,10 @@ import { View } from 'react-native'
 
 import { Header } from '../../components/Header'
 import Map from '../../components/Map'
+import { Routes } from '../../constants/routes'
 import { NativeStackParamList } from '../../routes'
 import { LocationInfo } from './LocationInfo'
-import { Content, Line } from './styles'
+import { AnimationText, Content, Line } from './styles'
 
 export interface Coordinate {
   latitude: number
@@ -19,7 +20,10 @@ interface MapMarkerRef {
   animateMarkerToCoordinate: (coordinate: Coordinate) => void
 }
 
-type RouteDetailScreenRouteProp = RouteProp<NativeStackParamList, 'RouteDetail'>
+type RouteDetailScreenRouteProp = RouteProp<
+  NativeStackParamList,
+  Routes.ROUTE_DETAIL
+>
 
 type RouteDetailProps = {
   route: RouteDetailScreenRouteProp
@@ -65,6 +69,7 @@ export function RouteDetail({ route }: RouteDetailProps) {
           icon={FlagCheckered}
           onPress={() => animateMarkerToCoordinate(coordinateFinal)}
         />
+        <AnimationText>{`${t('routeDetail.animationText')}`}</AnimationText>
       </Content>
     </View>
   )
