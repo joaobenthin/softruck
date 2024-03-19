@@ -1,25 +1,6 @@
-import styled, { css } from 'styled-components/native'
+import styled from 'styled-components/native'
 
-export type SizeProps = 'SMALL' | 'NORMAL'
-
-type Props = {
-  size: SizeProps
-}
-
-const variantSizeStyles = (size: SizeProps) => {
-  return {
-    SMALL: css`
-      width: 32px;
-      height: 32px;
-    `,
-    NORMAL: css`
-      width: 46px;
-      height: 46px;
-    `,
-  }[size]
-}
-
-export const Container = styled.View<Props>`
+export const Container = styled.View`
   border-radius: 6px;
   background-color: ${({ theme }) => theme.COLORS.BLUE_950};
 
@@ -27,5 +8,6 @@ export const Container = styled.View<Props>`
   align-items: center;
   margin-right: 12px;
 
-  ${({ size }) => variantSizeStyles(size)}
+  width: 46px;
+  height: 46px;
 `

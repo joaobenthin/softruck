@@ -1,23 +1,20 @@
 import { IconProps } from 'phosphor-react-native'
 import { useTheme } from 'styled-components'
 
-import { Container, SizeProps } from './styles'
+import { Container } from './styles'
 
 export type IconBoxProps = (props: IconProps) => JSX.Element
 
 type Props = {
-  size?: SizeProps
   icon: IconBoxProps
 }
 
-export function IconBox({ icon: Icon, size = 'NORMAL' }: Props) {
-  const iconSize = size === 'NORMAL' ? 24 : 16
-
+export function IconBox({ icon: Icon }: Props) {
   const { COLORS } = useTheme()
 
   return (
-    <Container size={size}>
-      <Icon size={iconSize} color={COLORS.BLUE_100} />
+    <Container>
+      <Icon size={24} color={COLORS.BLUE_100} />
     </Container>
   )
 }
