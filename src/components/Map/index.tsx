@@ -105,7 +105,6 @@ const Map = forwardRef<MapRef, MapProps>(function Map(props, ref) {
               ? mapViewDirectionsData.slice(1, 25)
               : mapViewDirectionsData.slice(1, -1)
           }
-          apikey="AIzaSyBXY7L7y9a6gQECuV_RDLnN6ZkrYBXbJAA"
           strokeWidth={3}
           strokeColor="blue"
         />
